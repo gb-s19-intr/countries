@@ -27,33 +27,6 @@ const getCountryAsHtmlString = (val) => {
 }
 
 
-/* Take the full set of *countries* (an Array defined above), then...
-"filter" will return a NEW array of values from the given Array that match the filter
-"map" will return a NEW array of values from the given Array, mapped to a function (HTML)
-"join" will return a String of all the HTML Strings (Countries) combined */
-// const showAllCountriesOver35k = (event) => {
-//   document.getElementById(`allcountries`).innerHTML = countries
-//   .filter( country => country.ppl >= 35000000 )
-//   .map( getCountryAsHtmlString )
-//   .join( `` );
-// }
-
-
-// // Assign the function to run from a `click` of a button by adding an Event "listener" to the button
-// document.getElementById(`btn35`).addEventListener(`click`, showAllCountriesOver35k);
-
-
-
-// const showAllCountries = (event) => {
-//   document.getElementById(`allcountries`).innerHTML = countries
-//   .map( getCountryAsHtmlString )
-//   .join( `` );
-// }
-
-// window.addEventListener(`load`, showAllCountries);
-
-
-
 // Takes any Array of countries and prints it to the document
 const printCountriesToList = (someCountries) => {
   document.getElementById(`allcountries`).innerHTML = someCountries.map( getCountryAsHtmlString ).join( `` );
@@ -61,6 +34,31 @@ const printCountriesToList = (someCountries) => {
   //  Return true if all was successful
   //  Return false if our map didn't go as planned
 }
+
+
+
+/* Take the full set of *countries* (an Array defined above), then...
+"filter" will return a NEW array of values from the given Array that match the filter
+"map" will return a NEW array of values from the given Array, mapped to a function (HTML)
+"join" will return a String of all the HTML Strings (Countries) combined */
+const showAllCountriesOver35k = (event) => {
+  const bigCountries = countries.filter( country => country.ppl >= 35000000 );
+  printCountriesToList( bigCountries );
+}
+
+const showAllCountries = (event) => {
+  printCountriesToList(countries);
+}
+
+
+
+// ALL LISTENERS (Interface actions)
+window.addEventListener(`load`, showAllCountries);
+document.getElementById(`btnAll`).addEventListener(`click`, showAllCountries);
+document.getElementById(`btn35`).addEventListener(`click`, showAllCountriesOver35k);
+
+
+
 
 
 
