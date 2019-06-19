@@ -1,3 +1,7 @@
+/*******************************
+              DATA
+*******************************/
+
 // Original dataset should not be modified
 const countries = [
   {name: `Canada`, ppl: 35000000, flag: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/125px-Flag_of_Canada_%28Pantone%29.svg.png`, wiki: `Canada`}, 
@@ -8,10 +12,14 @@ const countries = [
   {name: `England`, ppl: 90000000, flag: `.png`, wiki: ``},
 ];
 
-
 // "push" will adding an extra value to the given array
 countries.push ( {name: `Brazil`, ppl: 500000000, flag: `.png`, wiki: ``} );
 
+
+
+/*******************************
+        HELPER FUNCTIONS
+*******************************/
 
 /* getCountryAsHtmlString(): When passed an Object represeting a country, it returns back a formatted HTML view of that data.
 Arguments: val = a Country (Object)
@@ -26,7 +34,6 @@ const getCountryAsHtmlString = (val) => {
   `;
 }
 
-
 // Takes any Array of countries and prints it to the document
 const printCountriesToList = (someCountries) => {
   document.getElementById(`allcountries`).innerHTML = someCountries.map( getCountryAsHtmlString ).join( `` );
@@ -37,10 +44,10 @@ const printCountriesToList = (someCountries) => {
 
 
 
-/* Take the full set of *countries* (an Array defined above), then...
-"filter" will return a NEW array of values from the given Array that match the filter
-"map" will return a NEW array of values from the given Array, mapped to a function (HTML)
-"join" will return a String of all the HTML Strings (Countries) combined */
+/*******************************
+            FILTERS
+*******************************/
+
 const showAllCountriesOver35k = (event) => {
   const bigCountries = countries.filter( country => country.ppl >= 35000000 );
   printCountriesToList( bigCountries );
@@ -51,6 +58,10 @@ const showAllCountries = (event) => {
 }
 
 
+
+/*******************************
+    EVENT LISTENERS (ACTIONS)
+*******************************/
 
 // ALL LISTENERS (Interface actions)
 window.addEventListener(`load`, showAllCountries);
@@ -68,7 +79,10 @@ document.getElementById(`btn35`).addEventListener(`click`, showAllCountriesOver3
 
 
 
-
+/* Take the full set of *countries* (an Array defined above), then...
+"filter" will return a NEW array of values from the given Array that match the filter
+"map" will return a NEW array of values from the given Array, mapped to a function (HTML)
+"join" will return a String of all the HTML Strings (Countries) combined */
 
 
 /*
