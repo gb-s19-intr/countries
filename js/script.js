@@ -48,15 +48,18 @@ const printCountriesToList = (someCountries) => {
             FILTERS
 *******************************/
 
+const showAllCountries = (event) => {
+  printCountriesToList(countries);
+}
+
 const showAllCountriesOver35k = (event) => {
   const bigCountries = countries.filter( country => country.ppl >= 35000000 );
   printCountriesToList( bigCountries );
 }
 
-const showAllCountries = (event) => {
-  printCountriesToList(countries);
+const showProductRange = (start, qty=3) => {
+  printCountriesToList( countries.slice(start, start + qty) );
 }
-
 
 
 /*******************************
@@ -67,6 +70,14 @@ const showAllCountries = (event) => {
 window.addEventListener(`load`, showAllCountries);
 document.getElementById(`btnAll`).addEventListener(`click`, showAllCountries);
 document.getElementById(`btn35`).addEventListener(`click`, showAllCountriesOver35k);
+document.getElementById(`pg1`).addEventListener(`click`, (event) => { showProductRange(0) } );
+document.getElementById(`pg2`).addEventListener(`click`, (event) => { showProductRange(3) } );
+document.getElementById(`pg3`).addEventListener(`click`, (event) => { showProductRange(6) } );
+
+
+
+
+
 
 
 
