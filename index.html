@@ -14,14 +14,24 @@
       <button id="btnTwo">First two</button> -->
       <button id="btn35">TEST: Over 35k</button>
     </div>
-    
+
+    <form id="search">
+      <input type="search" name="query" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+
+    <form id="population">
+      <input type="radio" name="pop" value="0" id="pop0"> <label for="pop0">Under 40 M</label>
+      <input type="radio" name="pop" value="1" id="pop1"> <label for="pop1">40 M to 100 M</label>
+      <input type="radio" name="pop" value="2" id="pop2"> <label for="pop2">Over 100 M</label>
+    </form>
 
     <ol id="allcountries"></ol>
 
     <ul>
-      <li><a href="#" id="pg1">1</a></li>
-      <li><a href="#" id="pg2">2</a></li>
-      <li><a href="#" id="pg3">3</a></li>
+      <li><a href="#" id="pg1" data-start="0">1</a></li>
+      <li><a href="#" id="pg2" data-start="3">2</a></li>
+      <li><a href="#" id="pg3" data-start="6">3</a></li>
     </ul>
 
     

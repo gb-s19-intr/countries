@@ -61,6 +61,10 @@ const showProductRange = (start, qty=3) => {
   printCountriesToList( countries.slice(start, start + qty) );
 }
 
+const showMatchingNames = (query) => {
+  printCountriesToList( countries.filter( country => country.name.toLowerCase().includes( query.toLowerCase() ) ) );
+}
+
 
 /*******************************
     EVENT LISTENERS (ACTIONS)
@@ -73,7 +77,39 @@ document.getElementById(`btn35`).addEventListener(`click`, showAllCountriesOver3
 document.getElementById(`pg1`).addEventListener(`click`, (event) => { showProductRange(0) } );
 document.getElementById(`pg2`).addEventListener(`click`, (event) => { showProductRange(3) } );
 document.getElementById(`pg3`).addEventListener(`click`, (event) => { showProductRange(6) } );
+document.getElementById(`search`).addEventListener(`submit`, (event) => {
+  // Stop the form from doing what its meant to do (submitting to a new page)
+  event.preventDefault();
 
+  let q = document.getElementById(`search`).query.value;
+  showMatchingNames(q);
+
+  //document.getElementById(`search`).reset();
+});
+
+
+document.getElementById(`population`).addEventListener(`click`, (event) => {
+
+  let val = document.getElementById(`population`).pop.value;
+
+  if (val == 0) {
+    printCountriesToList( countries.filter( country => country.ppl < 40000000 ) )
+  } else if (val == 1) {
+    printCountriesToList( countries.filter( country => country.ppl >= 40000000 && country.ppl <= 100000000 ) )
+  } else if (val == 2) {
+    printCountriesToList( countries.filter( country => country.ppl > 100000000 ) )
+  }
+
+});
+
+
+
+
+
+// document.getElementById(`search`).query.addEventListener(`keyup`, (event) => {
+//   let q = document.getElementById(`search`).query.value;
+//   showMatchingNames(q);
+// })
 
 
 
