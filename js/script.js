@@ -66,6 +66,7 @@ const showMatchingNames = (query) => {
 }
 
 
+
 /*******************************
     EVENT LISTENERS (ACTIONS)
 *******************************/
